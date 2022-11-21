@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ExpensesApp.Pages.ExpensePage">
+    <ContentPage.Content>
+        <Grid Margin="20"
+              RowSpacing="10"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+              ColumnDefinitions="Auto,*">
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Expense"
+                   Style="{StaticResource HeadingLabelStyle}"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Text="Amount"
+                   Style="{StaticResource HeadingLabelStyle}"/>
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Fuel"
+                   Style="{StaticResource EntryTitleLabelStyle}"/>
+            <Entry x:Name="FuelEntry"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   TextChanged="FuelEntry_TextChanged"
+                   Style="{StaticResource AmountEntryStyle}"/>
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Parking"
+                   Style="{StaticResource EntryTitleLabelStyle}"/>
+            <Entry x:Name="ParkingEntry"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   TextChanged="ParkingEntry_TextChanged"
+                   Style="{StaticResource AmountEntryStyle}"/>
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="Food"
+                   Style="{StaticResource EntryTitleLabelStyle}"/>
+            <Entry x:Name="FoodEntry"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   TextChanged="FoodEntry_TextChanged"
+                   Style="{StaticResource AmountEntryStyle}"/>
+            <Label x:Name="ResultLabel"
+                   Grid.Row="4"
+                   Grid.ColumnSpan="2"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Button x:Name="UploadButton"
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    Text="Upload Images"
+                    Margin="0,20,0,0"
+                    FontSize="Medium"
+                    Clicked="UploadButton_Clicked"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="{OnPlatform macOS='50'}"/>
+            <CollectionView x:Name="ImageList"
+                            Grid.Row="6"
+                            Grid.ColumnSpan="2"
+                            ItemSizingStrategy="MeasureFirstItem"
+                            HorizontalScrollBarVisibility="Always"
+                            BackgroundColor="#F5F5F5"
+                            EmptyView="No Images Uploaded"
+                            VerticalOptions="EndAndExpand"
+                            HeightRequest="100">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Image Source="{Binding .}"
+                                   HeightRequest="100"
+                                   WidthRequest="100"
+                                   Aspect="AspectFill"
+                                   Margin="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeadingLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="EntryTitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="AmountEntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Keyboard" Value="Numeric"/>
+                <Setter Property="IsTextPredictionEnabled" Value="False"/>
+                <Setter Property="IsSpellCheckEnabled" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ExpensesApp.Pages.LoginPage"
+    NavigationPage.HasNavigationBar="True"
+    Title="Login"
+    BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Menu"
+                     Order="Primary"
+                     Priority="0"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="{OnPlatform macOS='CenterAndExpand', iOS='Start', Android='Start'}"
+                     Spacing="5">
+            <Image Source="logo"
+                   Style="{StaticResource LogoStyle}"/>
+            <Label Text="Log-in to Report Writer 2"
+                   Style="{StaticResource TitleStyle}"/>
+            <Entry x:Name="Username"
+                   TextChanged="Username_TextChanged"
+                   Style="{StaticResource EntryStyle}"/>
+            <Entry x:Name="Password"
+                   IsPassword="True"
+                   TextChanged="Password_TextChanged"
+                   Style="{StaticResource EntryStyle}"/>
+            <Button x:Name="LoginButton"
+                    Text="Login"
+                    Clicked="OnLogin"
+                    Style="{StaticResource LoginButtonStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LogoStyle" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="{OnPlatform macOS='0',iOS='0,100,0,0',Android='0,100,0,0'}"/>
+                <Setter Property="HeightRequest" Value="{OnPlatform iOS=150, Android=150, macOS=300}"/>
+            </Style>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="IsTextPredictionEnabled" Value="False"/>
+                <Setter Property="IsSpellCheckEnabled" Value="False"/>
+            </Style>
+            <Style x:Key="LoginButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BackgroundColor" Value="#4079B8"/>
+                <Setter Property="HeightRequest" Value="{OnPlatform macOS='50'}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>
